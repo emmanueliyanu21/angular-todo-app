@@ -25,4 +25,8 @@ export class DataService {
   updateTodo(index: number, updatedTodo: Todo) {
     this.todos[index] = updatedTodo;
   }
+
+  deleteTodo() {
+    console.log("item deleted")
+  }
 }

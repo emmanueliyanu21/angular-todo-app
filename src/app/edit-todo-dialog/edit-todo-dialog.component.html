@@ -6,10 +6,21 @@
         <input
           type="text"
           class="input"
+          #todoTextField="ngModel"
           name="text"
           [ngModel]="todo.text"
+          required
+          minlength="2"
           placeholder="Type todo text here"
         />
+      </div>
+      <div *ngIf="todoTextField.invalid">
+        <p class="help is-danger" *ngIf="todoTextField.errors.required">
+          Form is invalid
+        </p>
+        <p class="help is-danger" *ngIf="todoTextField.errors.minlength">
+          Text must be atleast two characters
+        </p>
       </div>
     </div>
 
