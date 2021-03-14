@@ -4,20 +4,28 @@
 
 <div class="container-x">
   <div class="add-todo-box">
-    <form action="">
+    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
       <h2 class="title is-5">New Todo</h2>
 
-      <div class="field is-grouped">
+      <div class="field is-grouped my-0">
         <p class="control is-expanded">
-          <input class="input" type="text" placeholder="Type todo text here" />
+          <input
+            ngModel
+            required
+            name="text"
+            class="input"
+            type="text"
+            placeholder="Type todo text here"
+          />
         </p>
         <p class="control">
-          <button class="button is-info alt-gradient-button">
+          <button type="submit" class="button is-info alt-gradient-button">
             <i class="material-icons">add</i>
             Add
           </button>
         </p>
       </div>
+      <p class="help is-danger">Form is invalid</p>
     </form>
   </div>
 </div>
@@ -25,20 +33,32 @@
 <section>
   <div class="container-x pt-5 mt-5">
     <div class="todos-list">
-      <div class="todo-item completed">
+      <div
+        class="todo-item"
+        *ngFor="let todo of todos"
+        [class.completed]="todo.completed"
+      >
         <div class="check-box">
           <i class="material-icons">check</i>
         </div>
-        <div class="todo-text">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum atque
-          necessitatibus ipsam voluptate tempora deleniti sit aperiam dolores
-          dicta. Ex illum quaerat nobis tenetur dolore sed. Dolorem non
-          molestiae inventore!
+
+        <div class="todo-text">{{ todo.text }}</div>
+
+        <div class="todo-controls-box">
+          <div class="todo-controls-button">
+            <i class="material-icons">edit</i>
+          </div>
+        </div>
+
+        <div class="todo-controls-box is-danger">
+          <div class="todo-controls-button">
+            <i class="material-icons">delete</i>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="todos-list">
+    <!-- <div class="todos-list">
       <div class="todo-item">
         <div class="check-box">
           <i class="material-icons">check</i>
@@ -57,6 +77,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>

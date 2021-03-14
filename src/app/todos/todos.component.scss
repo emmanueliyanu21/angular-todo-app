@@ -29,7 +29,7 @@
   padding: 20px;
   cursor: pointer;
   border-bottom: 1px solid #f2f3f5;
-
+  position: relative;
   &.completed {
     color: #aaa;
   }
@@ -77,20 +77,23 @@
 }
 
 .todo-item .todo-controls-box {
-  //   position: absolute;
+  position: absolute;
   bottom: 0;
   right: 5px;
   display: flex;
 
-  opacity: 1;
-  visibility: visible;
-
-  transition: opacity;
+  // hide by default
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(2px);
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
 }
 
-.todo-item:hover .todo-controld-box {
+.todo-item:hover .todo-controls-box {
   opacity: 1;
   visibility: visible;
+  transition-delay: 0.4s;
+  transform: translateY(0);
 }
 
 .todo-controls-box .todo-controls-button {
